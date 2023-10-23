@@ -187,8 +187,54 @@ public class Main {
         });
 
         frame.setVisible(true);
-    }
+    
+//JComboBox
 
+            JFrame frame = new JFrame("Exemplo JComboBox");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(300,150);
+
+            frame.setLocationRelativeTo(null);
+
+            JPanel panel = new JPanel();
+            frame.add(panel);
+
+            JLabel label = new JLabel("Selecione uma cor:");
+            panel.add(label);
+
+            String [] cores = {"Vermelho", "Azul", "Verde"};
+
+            JComboBox<String> comboBox = new JComboBox<>(cores);
+            panel.add(comboBox);
+
+            JButton button = new JButton("Alterar Cor de Fundo");
+            panel.add(button);
+
+            frame.setLayout(new FlowLayout());
+            final JPanel contentPanel = (JPanel)frame.getContentPane();
+
+            button.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String corSelecionada = (String) comboBox.getSelectedItem();
+
+                    switch (corSelecionada){
+                        case "Vermelho":
+                            contentPanel.setBackground(Color.RED);
+                            break;
+                        case "Azul":
+                            contentPanel.setBackground(Color.BLUE);
+                            break;
+                        case "Verde":
+                            contentPanel.setBackground(Color.GREEN);
+                    }
+
+
+                }
+            });
+
+
+            frame.setVisible(true);
 
 
     
