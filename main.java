@@ -148,5 +148,49 @@ public class Main {
             });
 
             frame.setVisible(true);
+
+        //JList
+
+        JFrame frame = new JFrame("Exemplo JList");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(300, 200);
+
+        JPanel panel = new JPanel();
+        frame.add(panel);
+
+        JLabel label = new JLabel("Selecione uma fruta");
+        panel.add(label);
+
+        String[] frutas = {"Maçã", "Banana", "Morango", "Uva", "Pera"};
+
+        JList<String> listaFrutas = new JList<>(frutas);
+        listaFrutas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        panel.add(new JScrollPane(listaFrutas));
+
+        JButton button = new JButton("Exibir Fruta Selecionada");
+        panel.add(button);
+
+        JTextField textField = new JTextField(15);
+        panel.add(textField);
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String frutaSelecionada = listaFrutas.getSelectedValue();
+
+                if(frutaSelecionada != null){
+                    textField.setText("Fruta Selecionada: " + frutaSelecionada);
+                } else {
+                    textField.setText("Selecione uma Fruta");
+                }
+            }
+        });
+
+        frame.setVisible(true);
+    }
+
+
+
+    
     }
 }
